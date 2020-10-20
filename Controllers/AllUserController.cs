@@ -1,6 +1,6 @@
+using JWTApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Services;
 
 namespace JWTApi.Controllers
 {

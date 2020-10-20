@@ -1,10 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Data",
-    "\\Models",
-    "\\Services"
+    ""
   ],
-  "SelectedNode": "\\WebApi.csproj",
   "PreviewInSolutionExplorer": false
 }

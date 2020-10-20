@@ -1,6 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
-using JWTApi.Models.Data;
+using JWTApi.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

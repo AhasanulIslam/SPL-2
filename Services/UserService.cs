@@ -4,12 +4,13 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using JWTApi.Helpers;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using WebApi.Entities;
 using WebApi.Helpers;
 
-namespace WebApi.Services
+namespace JWTApi.Services
 {
     public interface IUserService
     {
@@ -56,12 +57,12 @@ namespace WebApi.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             user.Token = tokenHandler.WriteToken(token);
 
-            return user.WithoutPassword();
+            return user;
         }
 
         public IEnumerable<User> GetAll()
         {
-            return _users.WithoutPasswords();
+            return _users;
         }
     }
 }

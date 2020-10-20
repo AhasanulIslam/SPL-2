@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using WebApi.Entities;
+using JWTApi.Models;
 
 namespace WebApi.Helpers
 {

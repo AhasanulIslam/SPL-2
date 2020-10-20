@@ -1,4 +1,4 @@
-namespace WebApi.Helpers
+namespace JWTApi.Helpers
 {
     public class AppSettings
     {

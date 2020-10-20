@@ -1,9 +1,10 @@
-using System.ComponentModel.DataAnnotations;
+  using System.ComponentModel.DataAnnotations;
 
-namespace WebApi.Models
+namespace JWTApi.Models
 {
     public class AuthenticateModel
     {
+        
         [Required]
         public string Username { get; set; }
 
