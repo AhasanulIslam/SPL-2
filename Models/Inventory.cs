@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,7 +8,7 @@ namespace JWTApi.Models
     {   [Key]
         public int InventoryId { get; set; }
         public string Status { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
          public ICollection<User> User { get; set; }
 

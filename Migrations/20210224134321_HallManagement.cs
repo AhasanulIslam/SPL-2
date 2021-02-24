@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApi.Migrations
 {
-    public partial class newHallMirgation : Migration
+    public partial class HallManagement : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,11 @@ namespace WebApi.Migrations
                     ProductId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    date = table.Column<string>(nullable: true),
+                    RejectedProduct = table.Column<int>(nullable: false),
+                    PurchaseProduct = table.Column<int>(nullable: false),
+                    Rate = table.Column<int>(nullable: false),
+                    AvailableProduct = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,9 +31,15 @@ namespace WebApi.Migrations
                 {
                     Room_Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Number = table.Column<int>(nullable: false),
+                    RoomNumber = table.Column<int>(nullable: false),
                     Capacity = table.Column<int>(nullable: false),
-                    Building = table.Column<string>(nullable: true)
+                    Building = table.Column<string>(nullable: true),
+                    StudentPhoneNo = table.Column<string>(nullable: true),
+                    AdmitDate = table.Column<string>(nullable: true),
+                    LeftDate = table.Column<string>(nullable: true),
+                    HallFee = table.Column<string>(nullable: true),
+                    FeeYear = table.Column<string>(nullable: true),
+                    HallRoll = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -65,7 +75,9 @@ namespace WebApi.Migrations
                     Debit = table.Column<int>(nullable: false),
                     Credit = table.Column<int>(nullable: false),
                     Date = table.Column<string>(nullable: true),
-                    AccountTitle = table.Column<string>(nullable: true)
+                    AccountTitle = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    StaffName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -105,7 +117,7 @@ namespace WebApi.Migrations
                     InventoryId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Status = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false),
+                    Date = table.Column<string>(nullable: true),
                     ProductId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -123,16 +135,27 @@ namespace WebApi.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    Registration = table.Column<string>(nullable: false),
+                    Student_Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Firstname = table.Column<string>(nullable: true),
                     Lastname = table.Column<string>(nullable: true),
-                    Session = table.Column<int>(nullable: false),
+                    FatherName = table.Column<string>(nullable: true),
+                    MotherName = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    BloodGroup = table.Column<string>(nullable: true),
+                    DateOfBirth = table.Column<string>(nullable: true),
+                    Religion = table.Column<string>(nullable: true),
+                    Nationality = table.Column<string>(nullable: true),
+                    Registration = table.Column<string>(nullable: true),
+                    Session = table.Column<string>(nullable: true),
                     Department = table.Column<string>(nullable: true),
+                    HallRoll = table.Column<string>(nullable: true),
+                    StuffName = table.Column<string>(nullable: true),
                     Room_Id = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.Registration);
+                    table.PrimaryKey("PK_Students", x => x.Student_Id);
                     table.ForeignKey(
                         name: "FK_Students_Rooms_Room_Id",
                         column: x => x.Room_Id,
@@ -153,7 +176,7 @@ namespace WebApi.Migrations
                     Password = table.Column<string>(nullable: true),
                     TransactionId = table.Column<int>(nullable: true),
                     InventoryId = table.Column<int>(nullable: true),
-                    Registration = table.Column<string>(nullable: true)
+                    Student_Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -165,11 +188,11 @@ namespace WebApi.Migrations
                         principalColumn: "InventoryId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Users_Students_Registration",
-                        column: x => x.Registration,
+                        name: "FK_Users_Students_Student_Id",
+                        column: x => x.Student_Id,
                         principalTable: "Students",
-                        principalColumn: "Registration",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Student_Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Users_Transactions_TransactionId",
                         column: x => x.TransactionId,
@@ -200,9 +223,9 @@ namespace WebApi.Migrations
                 column: "InventoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_Registration",
+                name: "IX_Users_Student_Id",
                 table: "Users",
-                column: "Registration");
+                column: "Student_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_TransactionId",

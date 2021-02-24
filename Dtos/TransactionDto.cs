@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-
-namespace JWTApi.Models
+namespace JWTApi.Dtos
 {
-    public class Transaction
+    public class TransactionDto
     {
         public int TransactionId { get; set; }
         public int Debit { get; set; }
@@ -11,7 +9,5 @@ namespace JWTApi.Models
         public string AccountTitle { get; set; }
         public string Description { get; set; }
         public string StaffName { get; set; }
-
-        public ICollection<User> User { get; set; }
     }
 }

@@ -60,5 +60,20 @@ namespace JWTApi.Controllers
 
         }
 
+        [AllowAnonymous]
+        [HttpGet("{new}/{delete}/{n}/{id}")]
+        public IActionResult TransAcc(int id)
+        {
+            var Id = Convert.ToInt16(id);
+            var user = _context.Transactions.FirstOrDefault(x => x.TransactionId == Id);
+            _context.Transactions.Remove(user);
+            // _context.Staffs.RemoveRange
+            //     (_context.Staffs.Where(x => x.StaffId == Id));
+            _context.SaveChanges();
+
+            return Ok(user);
+
+        }
+
     }
 }

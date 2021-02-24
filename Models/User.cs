@@ -23,9 +23,8 @@ namespace JWTApi.Models
         public int? InventoryId { get; set; }
         [ForeignKey("InventoryId")]
         public Invertory Invertory { get; set; }
-
-        public string Registration { get; set; }
-        [ForeignKey("Registration")]
+        public int Student_Id { get; set; }
+        [ForeignKey("Student_Id")]
         public Student Student { get; set; }
 
     }

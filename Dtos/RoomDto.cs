@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace JWTApi.Models
+namespace JWTApi.Dtos
 {
-    public class Room
+    public class RoomDto
     {
-        [Key]
+        
         public int Room_Id { get; set; }
         public int RoomNumber { get; set; }
         public int Capacity { get; set; }
@@ -16,8 +13,5 @@ namespace JWTApi.Models
         public string HallFee { get; set; }
         public string FeeYear { get; set; }
         public string HallRoll { get; set; }
-
-
-        public ICollection<Student> Student { get; set; }
     }
 }

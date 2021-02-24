@@ -22,7 +22,7 @@ namespace WebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<string>("Date")
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("ProductId")
@@ -44,10 +44,22 @@ namespace WebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AvailableProduct")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PurchaseProduct")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Rate")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RejectedProduct")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("date")
                         .HasColumnType("TEXT");
 
                     b.HasKey("ProductId");
@@ -61,14 +73,32 @@ namespace WebApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("AdmitDate")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Building")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Capacity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Number")
+                    b.Property<string>("FeeYear")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HallFee")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HallRoll")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LeftDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("RoomNumber")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("StudentPhoneNo")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Room_Id");
 
@@ -112,25 +142,56 @@ namespace WebApi.Migrations
 
             modelBuilder.Entity("JWTApi.Models.Student", b =>
                 {
-                    b.Property<string>("Registration")
+                    b.Property<int>("Student_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("BloodGroup")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DateOfBirth")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Department")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("FatherName")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Firstname")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HallRoll")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Lastname")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("MotherName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nationality")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Registration")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Religion")
+                        .HasColumnType("TEXT");
+
                     b.Property<int?>("Room_Id")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Session")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Session")
+                        .HasColumnType("TEXT");
 
-                    b.HasKey("Registration");
+                    b.Property<string>("StuffName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Student_Id");
 
                     b.HasIndex("Room_Id");
 
@@ -154,6 +215,12 @@ namespace WebApi.Migrations
 
                     b.Property<int>("Debit")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("StaffName")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("TransactionId");
 
@@ -180,8 +247,8 @@ namespace WebApi.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Registration")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Student_Id")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("TransactionId")
                         .HasColumnType("INTEGER");
@@ -193,7 +260,7 @@ namespace WebApi.Migrations
 
                     b.HasIndex("InventoryId");
 
-                    b.HasIndex("Registration");
+                    b.HasIndex("Student_Id");
 
                     b.HasIndex("TransactionId");
 
@@ -250,7 +317,9 @@ namespace WebApi.Migrations
 
                     b.HasOne("JWTApi.Models.Student", "Student")
                         .WithMany("User")
-                        .HasForeignKey("Registration");
+                        .HasForeignKey("Student_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("JWTApi.Models.Transaction", "Transaction")
                         .WithMany("User")
